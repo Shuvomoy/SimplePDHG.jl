@@ -24,6 +24,6 @@ end
 # ϵ = ||Ax-b||/(1+||b||) + ||project_nonnegative(A'y-c)||/(1+||c||) + ||c'x - b'y||/(1+|c'x|+|b'y|)
 
 function tolerance_LP(A::AbstractMatrix{T}, b::AbstractVector{T}, c::AbstractVector{T}, x::AbstractVector{T}, y::AbstractVector{T}) where T<:Real
-    ϵ = norm(A*x-b,2)/(1+norm(b,2)) + norm(project_nonnegative(A'*y-c), 2)/(1+norm(c, 2)) + norm(c'*x - b'*y, 2)/(1+abs(c'*x)+abs(b'*y))
+    ϵ = norm(A*x-b,2)/(1+norm(b,2)) + norm(project_nonnegative(-A'*y-c), 2)/(1+norm(c,2)) + norm(c'*x + b'*y, 2)/(1+abs(c'*x)+abs(b'*y))
     return ϵ
 end

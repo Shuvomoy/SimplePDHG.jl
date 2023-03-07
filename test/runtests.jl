@@ -43,6 +43,5 @@ using Test
 
     p_star = 0.31945239340811493 # the optimal value
 
-    @test (problem.c'*final_state_PDHG.x) ≈ p_star
-
+    @test abs((problem.c'*final_state_PDHG.x) - p_star) < 1e-4
 end
