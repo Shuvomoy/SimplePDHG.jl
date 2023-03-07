@@ -12,7 +12,7 @@ s.t. Ax = b
 ## Installation 
 
 ```
-] add SimplePDHG
+] add https://github.com/Shuvomoy/SimplePDHG.jl.git
 ```
 
 ## Example usage
