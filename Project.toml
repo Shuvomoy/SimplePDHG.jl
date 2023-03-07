@@ -3,6 +3,9 @@ uuid = "bd3c4b4f-113e-4e9f-b976-6f68b19c842b"
 authors = ["Shuvomoy Das Gupta <shuvomoy.dasgupta@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
 [compat]
 julia = "1"
 
