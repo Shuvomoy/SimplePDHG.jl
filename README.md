@@ -8,12 +8,12 @@ Big thanks to [Oscar Dowson](https://odow.github.io/) for providing [`MathOptInt
 
 ## What does `SimplePDHG.jl` do?
 
-This is an educational package used to demonstrate the ease of implementing an algorithm in `Julia` and incorporating it with one of Julia's main optimization modeling language `JuMP`. The package  designed to solve linear programming problems of the form:
+This is an educational package used to demonstrate the ease of implementing an algorithm in `Julia` and incorporating it with one of Julia's main optimization modeling language `JuMP`. The package is  designed to solve linear programming problems of the form:
 
 ```julia
 minimize    c'x
 subject to  A x = b
-            G h ≤ h
+            G x ≤ h
             x ∈ ℝ^n
 ```
 
@@ -36,7 +36,7 @@ To get the latest branch, type:
 ## Usage through `JuMP`
 
 ```julia
-using JuMP
+using JuMP, SimplePDHG
 model =  Model(SimplePDHG.Optimizer)
 @variable(model, x >= 0)
 @variable(model, 0 <= y <= 3)
@@ -67,24 +67,28 @@ A = [1 1 9 5; 3 5 0 8; 2 0 6 13]
 b = [7, 3, 5]
 c = [1, 3, 5, 2]
 m, n = size(A)
+G = [0.5012005468024234 -1.5806753104910911 1.1908183108070869 1.6527613262371468; -1.7596263752677483 -0.5235246034519885 0.4618550523688477 0.4871842582808355; -0.6305269735894394 0.023788955821653315 -0.5208935392017503 -1.667410808905106; 1.02249016425841 0.6890017766482583 1.2904648745012357 1.398062622113161; -0.9763001854265912 0.866180139889124 -0.18426778358700338 1.1436405988912726; 0.4004591856282607 -0.6315453522080423 -0.32707956849441 -1.192277331736516];
+h = 2*ones(2*m)
 
 # JuMP code
-using JuMP
+using JuMP, SimplePDHG
 model =  Model(SimplePDHG.Optimizer)
 @variable(model, x[1:n] >= 0)
 @objective(model, Min, c'*x)
 @constraint(model, A*x .== b)
+@constraint(model, G*x .<= h)
 optimize!(model)
 println("Objective value: ", objective_value(model))
 println("x = ", value.(x))
+x_star = value.(x)
 ```
 
 The output should be:
 
 ```julia
-Objective value: 4.92307853474916
+Objective value: 4.922528390226832
 
-x = [0.4230758379471922, 0.3461545013289533, 0.6923078385630216, 0.0]
+x = [0.42344643304517904, 0.34592985413549193, 0.6922584789550353, 0.0]
 ```
 
 
