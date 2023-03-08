@@ -1,6 +1,8 @@
 # SimplePDHG.jl
 
-I created this simple educational Julia package (less than 350 lines of code and less than 3 hours coding in total) to demonstrate to the students of the MIT Course 15.084/6.7220 Nonlinear Optimization that how easy it is to implement an algorithm in Julia and connecting it to the optimization modeling language `JuMP.jl` so that anyone can use your package. 
+
+
+I wrote this simple educational Julia package (less than 350 lines of code) for the MIT Course 15.084/6.7220 Nonlinear Optimization. The purpose of this package is to demonstrate to the students how simple it is to implement an optimization algorithm in  [Julia](https://julialang.org/) and connect it to the optimization modeling language [`JuMP`](https://jump.dev/) so that anyone can use your algorithm.
 
 Big thanks to [Oscar Dowson](https://odow.github.io/) for providing `MathOptInterface.jl ` code to connect this simple solver to `JuMP`! ([discourse link](https://discourse.julialang.org/t/connecting-a-simple-first-order-solver-to-solve-standard-form-linear-program-to-jump/95694))
 
