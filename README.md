@@ -21,6 +21,14 @@ where `x` is the decision variable. Under the hood the `SimplePDHG.jl` implement
 
 ##  Installation 
 
+Type the following in Julia REPL to the stable version:
+
+```
+] add SimplePDHG
+```
+
+To get the latest branch, type:
+
 ```julia
 ] add https://github.com/Shuvomoy/SimplePDHG.jl.git
 ```
