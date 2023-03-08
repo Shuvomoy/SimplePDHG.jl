@@ -135,6 +135,10 @@ function PDHG_iteration!(problem::LP_Data, state::PDHG_state)
 end
 
 function PDHG_solver(problem::LP_Data, setting::PDHG_settings)
+   
+    @info "*******************************************************"
+    @info "SimplePDHG https://github.com/Shuvomoy/SimplePDHG.jl"
+    @info "*******************************************************"
     
     # this is the function that the end user will use to solve a particular problem, internally it is using the previously defined types and functions to run 
     # PDHG algorithm
